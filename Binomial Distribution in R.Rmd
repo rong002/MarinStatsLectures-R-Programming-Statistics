@@ -1,0 +1,59 @@
+---
+title: "Binomial Distribution in R"
+output: html_notebook
+---
+
+# Calculating probabilies for Binominal Random Variables Using R
+throughout this session we'll focus on a random variable 'x' with n=20trial and p=1/6 probability of success.
+X~BIN(n=20, p=1/6)
+using the R functions: dbinom () or pbinom().
+access the help manual or simply type a '?' in front of the function
+dbinom=Density, distribution function
+pbinom=the binomial distribution with parameters size and prob. 
+
+```{r}
+help(dbinom)
+?dbinom
+```
+
+`execute the above will get the documentation on the _Help_ window`
+
+## 概率密度函数
+在数学中，连续型随机变量的概率密度函数（在不至于混淆时可以简称为密度函数）是一个描述这个随机变量的输出值，在某个确定的取值点附近的可能性的函数。图中，横轴为随机变量的取值，纵轴为概率密度函数的值，而随机变量的取值落在某个区域内的概率为概率密度函数在这个区域上的积分。当概率密度函数存在的时候，累积分布函数是概率密度函数的积分。概率密度函数一般以大写“PDF”（Probability Density Function）标记[1]。
+
+概率密度函数有时也被称为概率分布函数，但这种称法可能会和累积分布函数或概率质量函数混淆。
+
+## Probability density function
+
+Geometric visualisation of the mode, median and mean of an arbitrary probability density function.[1]
+In probability theory, a probability density function (PDF), or density of a continuous random variable, is a function, whose value at any given sample (or point) in the sample space (the set of possible values taken by the random variable) can be interpreted as providing a relative likelihood that the value of the random variable would equal that sample.[citation needed] In other words, while the absolute likelihood for a continuous random variable to take on any particular value is 0 (since there are an infinite set of possible values to begin with), the value of the PDF at two different samples can be used to infer, in any particular draw of the random variable, how much more likely it is that the random variable would equal one sample compared to the other sample.
+
+In a more precise sense, the PDF is used to specify the probability of the random variable falling within a particular range of values, as opposed to taking on any one value. This probability is given by the integral of this variable’s PDF over that range—that is, it is given by the area under the density function but above the horizontal axis and between the lowest and greatest values of the range. The probability density function is nonnegative everywhere, and its integral over the entire space is equal to one.
+
+The terms "probability distribution function"[2] and "probability function"[3] have also sometimes been used to denote the probability density function. However, this use is not standard among probabilists and statisticians. In other sources, "probability distribution function" may be used when the probability distribution is defined as a function over general sets of values, or it may refer to the cumulative distribution function, or it may be a probability mass function (PMF) rather than the density. "Density function" itself is also used for the probability mass function, leading to further confusion.[4] In general though, the PMF is used in the context of discrete random variables (random variables that take values on a discrete set), while PDF is used in the context of continuous random variables.
+
+
+[Boxplot and probability density function of a normal distribution N(0, σ2)]{/cloud/project/dbinom-1.png}
+
+
+Above is a _Boxplot and probability density function of a normal distribution N(0, σ2)_
+Source = [概率密度函数,维基百科，自由的百科全书]{https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B8}
+
+now! p=(x=3)
+```{r}
+dbinom(x=3, size=20, prob=1/6)
+```
+
+
+for multiple probabilities p(x=0) & p(x=1) & p(x=2) & p(x3).
+```{r}
+dbinom(x=0:3, size=20, prob=1/6)
+```
+
+
+for multiple probabilities p(x=0) or p(x=1) or p(x=2) or p(x3); i.e. p(x<=3)
+```{r}
+sum( dbinom(x=0:3, size=20, prob=1/6) )
+```
+
+
